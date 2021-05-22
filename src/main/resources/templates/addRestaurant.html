@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Foodify</title>
+	<!--/tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//tags -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<!--pop-up-box-->
+	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<!--//pop-up-box-->
+	<!-- price range -->
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+	<!-- fonts -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+<body>
+    <!-- top-header -->
+	<div class="header-most-top">
+		<p>Order whatever make you Smile &#128523;</p>
+	</div>
+	<!-- //top-header -->
+	<!-- header-bot-->
+	<div class="header-bot">
+		<div class="header-bot_inner_wthreeinfo_header_mid">
+			<!-- header-bot-->
+			<div class="col-md-4 logo_agile">
+				<h1>
+					<a href="index.html">
+						<img src="images/logo.png" alt="Logo ">				
+					</a>                 
+				</h1>
+               
+			</div>
+            <div class="col-md-4 logo_agile">
+                 <h1>
+                     <a>
+                         <span>A</span>dmin&nbsp;<span>H</span>ome
+                    </a>
+                </h1>
+            </div>
+			<!-- header-bot -->
+			
+				<!-- //cart details -->
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+	</div>
+	<!-- navigation -->
+	<div class="ban-top">
+		<div class="container">
+			<div class="top_nav_left">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav menu__list">
+								<li class="active">
+									<a class="nav-stylehead" href="adminHome.html">Home
+										<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" href="about.html">About Us</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" href="addOwner.html">Add Restaurant Owner</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" href="ownerList.html">Restaurant Owner List</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" href="addRestaurant.html">Add Restaurant</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" href="restaurantList.html">Restaurant List</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- //navigation -->
+	<div class="column">
+		<img src="images/Restaurant.jpg" alt="Mountains" style="width:100%">
+	  </div>
+    <div class="container">
+        <h2>Add Restaurant Details</h2><br>
+        <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-5">
+    
+                    <input type="hidden" name="id" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="firstName">Restaurant Name</label>
+                        <input type="text" class="form-control" required th:field="*{firstName}" name="firstName" id="firstName"
+                               placeholder="Enter First name">
+                    </div>
+					
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="number" class="form-control" required th:field="*{weight}" name="weight" id="weight"
+                               placeholder="Enter 10 digits Mobile Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" required th:field="*{city}" name="city" id="city"
+                               placeholder="Enter City">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" required th:field="*{address}" name="address" id="address"
+                               placeholder="Enter address">
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <input type="text" class="form-control" required th:field="*{rating}" name="rating" id="rating"
+                               placeholder="Enter Rating">
+                    </div>
+                <div class="col-sm-5">
+                    <p><b>Restaurant Image</b></p><br>
+                    <div class="custom-file">
+                        <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
+                        <label class="custom-file-label" for="productImage">Choose file</label>
+                    </div>
+                    <div class="form-group">
+                        <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
+                    </div>
+                    <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><br><br>
+	<!-- footer section -->
+	<div class="w3l-grids-footer">
+		<div class="col-xs-4 offer-footer">
+			<div class="col-xs-4 icon-fot">
+				<span class="fa fa-map-marker" aria-hidden="true"></span>
+			</div>
+			<div class="col-xs-8 text-form-footer">
+				<h3>Track Your Order</h3>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-xs-4 offer-footer">
+			<div class="col-xs-4 icon-fot">
+				<span class="fa fa-refresh" aria-hidden="true"></span>
+			</div>
+			<div class="col-xs-8 text-form-footer">
+				<h3>Free & Easy Returns</h3>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-xs-4 offer-footer">
+			<div class="col-xs-4 icon-fot">
+				<span class="fa fa-times" aria-hidden="true"></span>
+			</div>
+			<div class="col-xs-8 text-form-footer">
+				<h3>Online cancellation </h3>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="copy-right">
+		<div class="container">
+			<p>© 2021 Foodify. All rights reserved | Design by
+				<a href=""> Foodie Team.</a>
+			</p>
+		</div>
+	</div>
+	<!-- //footer section -->
+</body>
+</html>
