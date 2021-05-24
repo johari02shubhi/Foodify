@@ -33,13 +33,12 @@ public class User {
 	@Email(message = "{errors.invalid_email}")
 	private String email;
 	
-	
 	private String password;
 	
 	@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinTable(name = "of_userrole" 
-		,joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "ID")}
-		,inverseJoinColumns= {@JoinColumn(name = "role_id",referencedColumnName = "ID")})
+		,joinColumns = {@JoinColumn(name="USER_ID", referencedColumnName = "ID")}
+		,inverseJoinColumns= {@JoinColumn(name = "ROLE_ID",referencedColumnName = "ID")})
 	private List<Role> roles;
 
 	public User(User user) {
