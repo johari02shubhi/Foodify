@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 
 
 @Entity
-@Table(name = "of_userrole")
+@Table(name = "of_role")
 public class Role {
 
 	@Id
