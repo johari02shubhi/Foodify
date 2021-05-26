@@ -26,6 +26,10 @@ public class FoodProductService {
 	public Optional<FoodProduct> updateFoodById(long id) {
 		return foodProductRepo.findById(id);
 	}
+	
+	public Optional<FoodProduct> getFoodById(long id){
+		return foodProductRepo.findById(id);
+	}
 	public List<FoodProduct> getAllFoodByCategoryId(int id){
 		return foodProductRepo.findAllByCategory_Id(id);
 	}
