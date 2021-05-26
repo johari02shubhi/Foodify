@@ -25,15 +25,25 @@ public class HomeController {
 	@GetMapping("/shop")
 	public String shop(Model model) {
 		model.addAttribute("categories", categoryService.getAllCategory());
-		model.addAttribute("foodProducts", foodProductService.getAllFoodProduct());
+		model.addAttribute("products", foodProductService.getAllFoodProduct());
 		return "shop";
 	}
 	
 	@GetMapping("/shop/category/{id}")
 	public String shopByCategory(Model model, @PathVariable int id) {
 		model.addAttribute("categories", categoryService.getAllCategory());
-		model.addAttribute("foodProducts", foodProductService.getAllFoodByCategoryId(id));
+		model.addAttribute("products", foodProductService.getAllFoodByCategoryId(id));
 		return "shop";
 	}
+	
+	
+	
+	 @GetMapping("/shop/viewproduct/{id}") 
+	 public String viewProduct(Model model, @PathVariable int id) {
+		 model.addAttribute("categories", categoryService.getAllCategory());
+		 model.addAttribute("product", foodProductService.getFoodById(id).get()); 
+		 return "viewProduct";
+		}
+	 
 
 }
